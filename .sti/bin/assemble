@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Download and place binary in JBoss. WAR_FILE_URL variable is specified as
+# an environment variable in the BuildConfig
+if [ -z "$WAR_FILE_URL" ]; then
+  echo "Found WAR_FILE_URL as environment variable !"
+  curl -o $JBOSS_HOME/standalone/deployments/ROOT.war -O ${WAR_FILE_URL}
+fi
+
+# Call default assemble script
+/usr/local/sti/assemble
